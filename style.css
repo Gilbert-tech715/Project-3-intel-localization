@@ -1,0 +1,200 @@
+:root{
+  --blue-700:#125992;
+  --blue-500:#0074D9;
+  --ink:#001933;
+  --card:#e0e7ef;
+  --white:#fff;
+  --shadow:0 2px 12px rgba(0,0,0,.10);
+  --shadow-lg:0 4px 20px rgba(0,0,0,.18);
+  --gap:20px;
+}
+
+/* === Reset/Base === */
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{ font-family: Arial, sans-serif; color: var(--ink); line-height: 1.5; }
+
+/* ===== HERO (Top Blue) ===== */
+.top-blue{
+  background:var(--blue-700);
+  color:var(--white);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: clamp(32px, 6vw, 96px) 16px; /* a bit fuller on big screens */
+}
+.top-blue header{ width:100%; }
+.top-blue header div{ max-width: 1300px; margin: 0 auto; } /* fuller */
+.top-blue img{
+  width: clamp(72px, 8vw, 140px);
+  height:auto;
+  display:block;
+  margin: 0 auto clamp(10px,1.5vw,20px);
+}
+.top-blue h1{
+  margin: 8px 0 12px;
+  font-weight: 800;
+  line-height: 1.06;
+  font-size: clamp(1.8rem, 5vw, 3.6rem); /* scales up a touch */
+  letter-spacing: .2px;
+}
+.top-blue p{
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 80ch; /* a bit wider */
+}
+
+/* ===== Bottom Section ===== */
+.bottom-default{
+  background:var(--white);
+  padding: 0;
+}
+.helper-text{
+  text-align:center;
+  margin: 12px 0 24px;
+  color:#415a77;
+  font-size:.95rem;
+}
+
+/* ===== Slider with Arrows ===== */
+.slider-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  max-width: 1600px;   /* fuller on big screens */
+  margin: 0 auto;
+  padding: 0 12px;
+}
+.timeline-arrow{
+  background:var(--ink);
+  color:#fff;
+  border:none;
+  border-radius:50%;
+  width:42px;
+  height:42px;
+  font-size:1.5rem;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: background .2s;
+  flex:0 0 auto;
+}
+.timeline-arrow:hover, .timeline-arrow:focus{
+  background:var(--blue-500);
+  outline:2px solid #fff;
+}
+
+/* Scroll container */
+.slider-container{
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth;
+  scroll-snap-type:x mandatory;
+  padding: 14px 2px;
+  flex: 1 1 auto;
+  scrollbar-width: thin;
+}
+.slider-row{
+  display:flex;
+  flex-wrap:nowrap;
+  gap: var(--gap);
+}
+
+/* ===== Card (uniform size) ===== */
+.slider-card{
+  position:relative;
+  flex: 0 0 260px;   /* base size (desktop) */
+  width: 260px;
+  height: 300px;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  color:var(--ink);
+  text-align:center;
+  scroll-snap-align:start;
+  transition: box-shadow .2s, transform .2s;
+  background-size: cover;
+  background-position: center;
+}
+.slider-card:hover,
+.slider-card:focus{ box-shadow: var(--shadow-lg); outline:none; transform: translateY(-2px); }
+
+.slider-card-footer{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  background: rgba(0,0,0,.72);
+  color:#fff;
+  padding: 10px 8px;
+  font-weight:700;
+  font-size: 1rem;
+  z-index: 2;
+  pointer-events:none;
+}
+.slider-card-overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.85);
+  color:#fff;
+  opacity:0;
+  pointer-events:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  text-align:center;
+  font-size:.95em;
+  line-height:1.5;
+  transition: opacity .22s ease-in-out;
+  z-index: 3;
+}
+.slider-card:hover .slider-card-overlay,
+.slider-card:focus-within .slider-card-overlay,
+.slider-card:focus .slider-card-overlay{
+  opacity:1; pointer-events:auto;
+}
+
+/* ===== Make page “fuller” on big screens ===== */
+@media (min-width: 1200px){
+  .slider-wrap{ max-width: 1720px; }         /* wider container */
+  .slider-row{ gap: 24px; }                   /* breathing room */
+  .slider-card{
+    flex-basis: 300px; width: 300px; height: 340px; /* larger cards */
+  }
+  .timeline-arrow{ width:46px; height:46px; font-size:1.6rem; }
+  .top-blue header div{ max-width: 1400px; }  /* hero a bit wider */
+}
+
+/* ===== Stack vertically on small screens ===== */
+@media (max-width: 600px){
+  .timeline-arrow{ display:none; }
+
+  .slider-container{
+    overflow-x:hidden;
+    overflow-y:auto;
+    max-height:100vh;
+    padding-right:8px;
+    scroll-snap-type: y mandatory;
+  }
+
+  .slider-row{
+    flex-direction:column;      /* vertical stack */
+    flex-wrap:nowrap;
+    gap: var(--gap);
+  }
+
+  .slider-card{
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 300px;
+    scroll-snap-align:start;
+  }
+}

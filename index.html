@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Intel: Sustainability Through the Ages</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top blue hero -->
+  <div class="top-blue">
+    <header>
+      <div>
+        <img src="img/intel-header-logo.svg" alt="Intel Logo"/>
+        <h1>Sustainability Through the Ages</h1>
+        <p>
+          Explore Intel's journey through time, discovering how our commitment
+          to innovation has shaped a more sustainable future for technology and our planet.
+        </p>
+      </div>
+    </header>
+  </div>
+
+  <!-- Timeline slider -->
+  <div class="bottom-default">
+    <div class="slider-wrap">
+      <button id="arrow-left" class="timeline-arrow" aria-label="Scroll left" type="button">‹</button>
+
+      <div id="timeline-boxes" class="slider-container" aria-label="Intel timeline">
+        <div class="slider-row">
+
+          <!-- 9 cards (all uniform size) -->
+          <div class="slider-card" tabindex="0" style="background-image:url('img/1.jpg')">
+            <div class="slider-card-footer">1968<br>Intel Founded</div>
+            <div class="slider-card-overlay">
+              Robert Noyce and Gordon Moore rename NM Electronics to Intel Corporation, laying the foundation for decades of innovation.
+            </div>
+          </div>
+
+          <div class="slider-card" tabindex="0" style="background-image:url('img/2.jpg')">
+            <div class="slider-card-footer">1971<br>First Microprocessor</div>
+            <div class="slider-card-overlay">
+              Intel debuts the 4004, the first commercial microprocessor, igniting the microprocessor revolution and propelling the future of computing devices.
+            </div>
+          </div>
+
+          <div class="slider-card" tabindex="0" style="background-image:url('img/3.jpg')">
+            <div class="slider-card-footer">1978<br>8086 Processor</div>
+            <div class="slider-card-overlay">
+              Launch of the 8086 processor, establishing the x86 architecture that drives countless PCs and servers in the modern era.
+            </div>
+          </div>
+
+          <div class="slider-card" tabindex="0" style="background-image:url('img/4.jpg')">
+            <div class="slider-card-footer">1985<br>386 Processor</div>
+            <div class="slider-card-overlay">
+              Intel introduces the 386 processor with 32-bit architecture, ushering in a new era of performance and multitasking for personal computers.
+            </div>
+          </div>
+
+          <div class="slider-card" tabindex="0" style="background-image:url('img/2006.jpg')">
+            <div class="slider-card-footer">2006<br>Peak GHG Emissions</div>
+            <div class="slider-card-overlay">
+              This year marks Intel's largest greenhouse gas emissions for operations. Over subsequent years, Intel invests heavily in chemical abatement, renewable energy-efficient manufacturing to reverse this trend.
+            </div>
+          </div>
+
+          <div class="slider-card" tabindex="0" style="background-image:url('img/2020.jpg')">
+            <div class="slider-card-footer">2020<br>RISE Strategy</div>
+            <div class="slider-card-overlay">
+              Intel launches its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy and 2030 goals, aiming to drive idustry-wide progress on climate action, water stewardship, and waste reduction.
+            </div>
+          </div>
+
+          <div class="slider-card" tabindex="0" style="background-image:url('img/2022.jpg')">
+            <div class="slider-card-footer">2022<br>Net-Zero by 2040</div>
+            <div class="slider-card-overlay">
+              Intel announces its commitment to achieve net-zero greenhouse gas emission (Scope 1 and 2) across its global operations by 2040, building on years of environmental initiatives.
+            </div>
+          </div>
+
+          <div class="slider-card" tabindex="0" style="background-image:url('img/2023.jpg')">
+            <div class="slider-card-footer">2023<br>Renewable Electricity</div>
+            <div class="slider-card-overlay">
+              The company achieves 99% renewable electricity usage worldwide, helping to drastically lower carbon emmisons and driving progress toward Intel's long-term sustainability goals.
+            </div>
+          </div>
+
+          <!-- 2024 is NORMAL now (same size) -->
+          <div class="slider-card" tabindex="0" style="background-image:url('img/2024.jpg')">
+            <div class="slider-card-footer">2024<br>Sustainability Summit</div>
+            <div class="slider-card-overlay">
+              Intel hosts its first Sustainability Summit, uniting suppliers, government officials, abd industry leaders to collaborate on next-generation sustainable semiconductor manufacturing.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button id="arrow-right" class="timeline-arrow" aria-label="Scroll right" type="button">›</button>
+    </div>
+
+    <p class="helper-text">Scroll or use arrows • Hover/focus cards to learn more</p>
+  </div>
+
+  <script>
+    const leftBtn = document.getElementById('arrow-left');
+    const rightBtn = document.getElementById('arrow-right');
+    const timeline = document.getElementById('timeline-boxes');
+
+    const scrollAmount = () => {
+      const card = document.querySelector('.slider-card');
+      const gap = 20;
+      return card ? card.getBoundingClientRect().width + gap : 260;
+    };
+
+    if (leftBtn && rightBtn && timeline) {
+      leftBtn.onclick  = () => timeline.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+      rightBtn.onclick = () => timeline.scrollBy({ left:  scrollAmount(), behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
