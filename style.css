@@ -109,7 +109,10 @@ body{ font-family: Arial, sans-serif; color: var(--ink); line-height: 1.5; }
   position:relative;
   flex: 0 0 260px;   /* base size (desktop) */
   width: 260px;
+  max-width: 95vw; /* limit card width on large screens */
   height: 300px;
+  max-height: 340px; /* limit card height */
+  margin: 0 auto; /* center card if possible */
   background: var(--card);
   border-radius: 16px;
   box-shadow: var(--shadow);
